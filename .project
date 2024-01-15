@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>MySpringBlog</name>
-	<comment></comment>
+	<comment>Service-oriented architecture (SOA) based blog system implemented using the Spring Framework</comment>
 	<projects>
 	</projects>
 	<buildSpec>
