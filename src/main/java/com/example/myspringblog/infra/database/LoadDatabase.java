@@ -39,7 +39,8 @@ public class LoadDatabase {
 			log.info(commonUser.toString());
 			log.info("");
 			
-			log.info("Preloading " + blogRepository.save(new CommonBlog("base64ID", "First blog title", "This is my first blog ever!", commonUser)));
+			log.info("Preloading " + blogRepository.save(new CommonBlog("First blog title", "This is my first blog ever!", commonUser)));
+			log.info("Preloading " + blogRepository.save(new CommonBlog("How to make a blog!?", "In this blog Im going to make a blog?", commonUser)));
 			
 			// fetch all CommonBlogs
 			log.info("CommonBlogs found with findAll():");

@@ -1,6 +1,7 @@
 package com.example.myspringblog.core.entity;
 
 import java.util.Objects;
+import java.util.UUID;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -9,7 +10,7 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class CommonBlog {
 	
-	private @Id String id;
+	private @Id UUID id;
 	private String title;
 	private String content;
 	private @ManyToOne CommonUser writer;
@@ -20,12 +21,13 @@ public class CommonBlog {
 
 	public CommonBlog(String title, String content, CommonUser writer) {
 		super();
+		this.id = UUID.randomUUID();
 		this.title = title;
 		this.content = content;
 		this.writer = writer;
 	}
 	
-	public CommonBlog(String id, String title, String content, CommonUser writer) {
+	public CommonBlog(UUID id, String title, String content, CommonUser writer) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -33,11 +35,11 @@ public class CommonBlog {
 		this.writer = writer;
 	}
 
-	public String getId() {
+	public UUID getId() {
 		return id;
 	}
 	
-	public void setId(String id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 	
@@ -67,7 +69,7 @@ public class CommonBlog {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(this.id, this.title, this.content, this.writer);
+		return Objects.hash(this.id, this.title, this.content);
 	}
 	
 	@Override

@@ -1,10 +1,14 @@
 package com.example.myspringblog.core.entity;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class CommonUser {
@@ -13,6 +17,7 @@ public class CommonUser {
 	private String name;
 	private String email;
 	private String password;
+	private @OneToMany(fetch = FetchType.EAGER) Set<CommonBlog> blogs;
 	
 	public CommonUser() {
 		super();
@@ -23,14 +28,24 @@ public class CommonUser {
 		this.name = name;
 		this.email = email;
 		this.password = password;
+		this.blogs = new HashSet<>();
 	}
 	
-	public CommonUser(Long id, String name, String email, String password) {
+	public CommonUser(String name, String email, String password, Set<CommonBlog> blogs) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.blogs = blogs;
+	}
+	
+	public CommonUser(Long id, String name, String email, String password, Set<CommonBlog> blogs) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.password = password;
+		this.blogs = blogs;
 	}
 
 	public Long getId() {
@@ -65,6 +80,14 @@ public class CommonUser {
 		this.password = password;
 	}
 	
+	public Set<CommonBlog> getBlogs() {
+		return blogs;
+	}
+
+	public void setBlogs(Set<CommonBlog> blogs) {
+		this.blogs = blogs;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(this.id, this.email, this.password);
@@ -84,7 +107,8 @@ public class CommonUser {
 	@Override
 	public String toString() {
 		return "CommonUser{" + "id=" + this.id + ", name='" + this.name + "\'" 
-				+ ", email='" + this.email + "\'" + ", password='" + this.password + "\'" + "}";
+				+ ", email='" + this.email + "\'" + ", password='" + this.password + "\'" + 
+				", blogs=" + this.blogs + "}";
 	}
 	
 }
