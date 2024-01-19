@@ -28,7 +28,7 @@ public class CommonUser {
 		this.name = name;
 		this.email = email;
 		this.password = password;
-		this.blogs = new HashSet<>();
+		this.blogs = new HashSet<CommonBlog>();
 	}
 	
 	public CommonUser(String name, String email, String password, Set<CommonBlog> blogs) {
