@@ -1,13 +1,13 @@
-package com.example.myspringblog.core.usecase;
+package com.example.myspringblog.application.service;
 
 import java.util.UUID;
 
 import org.springframework.context.annotation.Configuration;
 
-import com.example.myspringblog.core.entity.CommonBlog;
-import com.example.myspringblog.core.entity.CommonUser;
-import com.example.myspringblog.core.repository.CommonBlogRepository;
-import com.example.myspringblog.infra.BlogInputDataStream;
+import com.example.myspringblog.domain.model.CommonBlog;
+import com.example.myspringblog.domain.model.CommonUser;
+import com.example.myspringblog.domain.repository.CommonBlogRepository;
+import com.example.myspringblog.infrastructure.persistence.BlogInputDataStream;
 
 @Configuration
 public class BlogInteractor implements BlogInputBoundary {

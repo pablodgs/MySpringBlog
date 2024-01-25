@@ -1,22 +1,24 @@
-package com.example.myspringblog.infra;
+package com.example.myspringblog.presentation.controller;
 
 import java.util.List;
 
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.myspringblog.core.entity.CommonBlog;
-import com.example.myspringblog.core.entity.CommonUser;
-import com.example.myspringblog.core.repository.CommonBlogRepository;
-import com.example.myspringblog.core.repository.CommonUserRepository;
-import com.example.myspringblog.core.usecase.BlogInputBoundary;
+import com.example.myspringblog.application.service.BlogInputBoundary;
+import com.example.myspringblog.domain.model.CommonBlog;
+import com.example.myspringblog.domain.model.CommonUser;
+import com.example.myspringblog.domain.repository.CommonBlogRepository;
+import com.example.myspringblog.domain.repository.CommonUserRepository;
+import com.example.myspringblog.infrastructure.persistence.BlogInputDataStream;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 
 @RestController
+@RequestMapping("/api")
 public class UserController {
 	private final CommonUserRepository userRepository;
 	private final CommonBlogRepository blogRepository;
@@ -40,13 +42,9 @@ public class UserController {
 	}
 	
 	@PostMapping("/blog")
-	ResponseEntity<String> writeBlog(@RequestBody BlogInputDataStream blogInputDataStream) {
-		blogInputBoundary.saveBlog(blogInputDataStream);
-//		URI location = new URI("http:/localhost:8080/home");
-		HttpHeaders responseHeaders = new HttpHeaders();
-//		responseHeaders.setLocation(location);
-		responseHeaders.set("MyResponseHeader", "MyValue");
-		return new ResponseEntity<String>("Hello World", null, HttpStatus.CREATED);
+	ResponseEntity<CommonBlog> writeBlog(@RequestBody BlogInputDataStream blogInputDataStream) {
+		CommonBlog newBlog = blogInputBoundary.saveBlog(blogInputDataStream);
+		return ResponseEntity.ok().body(newBlog);
 	}
 
 }

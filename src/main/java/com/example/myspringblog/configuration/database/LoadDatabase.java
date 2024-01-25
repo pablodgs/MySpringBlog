@@ -1,4 +1,4 @@
-package com.example.myspringblog.infra.database;
+package com.example.myspringblog.configuration.database;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,10 +6,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.example.myspringblog.core.entity.CommonBlog;
-import com.example.myspringblog.core.entity.CommonUser;
-import com.example.myspringblog.core.repository.CommonBlogRepository;
-import com.example.myspringblog.core.repository.CommonUserRepository;
+import com.example.myspringblog.domain.model.CommonBlog;
+import com.example.myspringblog.domain.model.CommonUser;
+import com.example.myspringblog.domain.repository.CommonBlogRepository;
+import com.example.myspringblog.domain.repository.CommonUserRepository;
 
 @Configuration
 public class LoadDatabase {

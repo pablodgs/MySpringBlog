@@ -1,0 +1,20 @@
+### GET all users
+
+GET http://localhost:8080/users
+
+### GET all blogs
+
+GET http://localhost:8080/blogs
+
+### POST a new blog
+
+POST http://localhost:8080/blog
+Content-Type: application/json
+
+{
+  "title": "My first blog",
+  "content": "This is my first blog",
+  "writer": {
+    "id": 1
+  }
+}

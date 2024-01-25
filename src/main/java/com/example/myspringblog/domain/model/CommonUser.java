@@ -1,4 +1,4 @@
-package com.example.myspringblog.core.entity;
+package com.example.myspringblog.domain.model;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -7,13 +7,16 @@ import java.util.Set;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
-@Entity
+@Entity(name = "user")
+@Table(name = "user")
 public class CommonUser {
 	
-	private @Id @GeneratedValue Long id;
+	private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
 	private String name;
 	private String email;
 	private String password;
